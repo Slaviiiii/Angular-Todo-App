@@ -1,0 +1,9 @@
+<div class="todo">
+  <app-header 
+    [createError]="createError"
+    [todoList]="todoList"
+    (causedError)="makeError($event)"/>
+  <app-todo-list 
+    [createError]="createError"
+    [todoList]="todoList"/>
+</div>

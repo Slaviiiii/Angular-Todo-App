@@ -1,0 +1,28 @@
+<div class="todolist">
+  <h3>List of Works Todo:</h3>
+  <p *ngIf="createError" class="error-info">Field is required!</p>
+  <ul>
+    <li [id]="todo.id" #parent *ngFor="let todo of todoList" [ngClass]="todo.isCompleted ? 'completed' : ''"> 
+      {{ todo.text }}
+      <div class="tools">
+        <button (click)="onCompletetion(parent)" class="complete"><i class="fas fa-check"></i></button>
+        <button (click)="onEdit(parent)" class="edit">EDIT</button>
+        <button (click)="onDelete(parent)" class="delete"><i class="fas fa-times"></i></button>
+      </div>
+    </li>
+  </ul>
+</div>
+ 
+<div [ngStyle]="{display: isBeingEditted ? 'block' : 'none'}" class="popup">
+  <h3>Edit your todo:</h3>
+  <div class="popup-body">
+    <p class="popup-info"></p>
+    <input #popup
+      type="text"
+      class="popup-input"
+      [placeholder]='edittedTodo?.text'
+    />
+    <button (click)="onUpdate(popup)" class="popup-btn accept">Update</button>
+    <button (click)="onCancel(popup)" class="popup-btn cancel">Cancel</button>
+  </div>
+</div>
