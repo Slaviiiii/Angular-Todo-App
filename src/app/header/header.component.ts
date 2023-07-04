@@ -21,7 +21,7 @@ export class HeaderComponent {
     }
       this.todoList.push(todo);   
       this.errorText = 'out of error';
-      this.callParentError();
+      this.callParentError(); 
     } else {
       this.errorText = 'in error';
       this.callParentError();
