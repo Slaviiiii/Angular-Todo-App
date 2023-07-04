@@ -14,7 +14,7 @@ export class HeaderComponent {
 
   onAdd(inputField: HTMLInputElement) {
     if(inputField.value !== '') {
-    const todo = {
+    const todo: Todo = {
        id: this.todoList.length + 1,
        text: inputField.value,
        isCompleted: false

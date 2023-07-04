@@ -10,7 +10,7 @@ export class TodoListComponent {
 	@Input() todoList: Todo[] = [];
 	@Input() createError: boolean | undefined; 
 	isBeingEditted: boolean = false;
-	edittedTodo: any = {};
+	edittedTodo: Todo = {};
 	completedTodo: any = {};
 
 	onCompletetion(parent: HTMLLIElement) {
@@ -49,6 +49,7 @@ export class TodoListComponent {
 	onUpdate(popup: HTMLInputElement) {
 		this.edittedTodo.text = popup.value;
 		this.todoList = this.todoList.filter(todo => todo.id !== this.edittedTodo.id);	
+		console.log('in func');
 		this.todoList = [ this.edittedTodo,...this.todoList];	
 		this.isBeingEditted = false;
 		this.edittedTodo = {};

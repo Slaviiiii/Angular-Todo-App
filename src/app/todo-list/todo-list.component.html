@@ -20,7 +20,7 @@
     <input #popup
       type="text"
       class="popup-input"
-      [placeholder]='edittedTodo?.text'
+      [placeholder]='edittedTodo.text'
     />
     <button (click)="onUpdate(popup)" class="popup-btn accept">Update</button>
     <button (click)="onCancel(popup)" class="popup-btn cancel">Cancel</button>
