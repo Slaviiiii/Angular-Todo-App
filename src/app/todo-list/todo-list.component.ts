@@ -15,13 +15,11 @@ export class TodoListComponent {
 
 	onCompletetion(parent: HTMLLIElement) {
 		if(parent.classList.contains('completed') === false) {
-			parent.classList.add('completed');
 			this.completedTodo = this.todoList.find(todo => todo.id === Number(parent.id));
 			this.completedTodo.isCompleted = true;
 			this.todoList = this.todoList.filter(todo => todo.id !== this.completedTodo.id);
 			this.todoList = [this.completedTodo, ...this.todoList];
 		} else {
-			parent.classList.remove('completed');
 			this.completedTodo = this.todoList.find(todo => todo.id === Number(parent.id));
 			this.completedTodo.isCompleted = false;
 			this.todoList = this.todoList.filter(todo => todo.id !== this.completedTodo.id);
