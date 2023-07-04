@@ -18,17 +18,17 @@ export class TodoListComponent {
 			this.completedTodo = this.todoList.find(todo => todo.id === Number(parent.id));
 			this.completedTodo.isCompleted = true;
 			this.todoList = this.todoList.filter(todo => todo.id !== this.completedTodo.id);
-			this.todoList = [this.completedTodo, ...this.todoList];
+			this.todoList.unshift(this.completedTodo);
 		} else {
 			this.completedTodo = this.todoList.find(todo => todo.id === Number(parent.id));
 			this.completedTodo.isCompleted = false;
 			this.todoList = this.todoList.filter(todo => todo.id !== this.completedTodo.id);
-			this.todoList = [this.completedTodo, ...this.todoList];
+			this.todoList.unshift(this.completedTodo);
 		}
 	}
 
 	onDelete(parent: HTMLLIElement) {
-		parent.remove();
+		this.todoList = this.todoList.filter(todo => todo.id !== Number(parent.id));
 	}
 
 	onEdit(parent: HTMLLIElement) {
@@ -49,8 +49,7 @@ export class TodoListComponent {
 	onUpdate(popup: HTMLInputElement) {
 		this.edittedTodo.text = popup.value;
 		this.todoList = this.todoList.filter(todo => todo.id !== this.edittedTodo.id);	
-		console.log('in func');
-		this.todoList = [ this.edittedTodo,...this.todoList];	
+		this.todoList.push(this.edittedTodo);
 		this.isBeingEditted = false;
 		this.edittedTodo = {};
 		popup.value = '';
